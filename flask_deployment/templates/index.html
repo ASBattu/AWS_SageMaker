@@ -1,0 +1,224 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sentiment Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 500px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        label {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-bottom: 15px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .result-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .result-label {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .result-value {
+            font-size: 18px;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+
+        .result-line {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Sentiment Inferer</h1>
+    <form method="post" action="/predict">
+        <label for="txt_input">Text-input</label><br>
+        <input type="text" name="txt_input" id="txt_input"><br><br>
+        <input type="submit" value="Predict"><br><br>
+    </form>
+    {% if result %}
+        <div class="result-container">
+            <div class="result-line">
+                <span class="result-label">Predicted Sentiment:</span>
+                <span class="result-value">{{ result[0] }}</span>
+            </div>
+            <div class="result-line">
+                <span class="result-label">Confidence Level:</span>
+                <span class="result-value">{{ result[1] }}</span>
+            </div>
+        </div>
+    {% endif %}
+</body>
+
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sentiment Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 500px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        label {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-bottom: 15px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .result-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .result-label {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .result-value {
+            font-size: 18px;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+
+        .result-line {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .negative-sentiment {
+            color: red;
+        }
+
+        .positive-sentiment {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Sentiment Inferer</h1>
+    <form method="post" action="/predict">
+        <label for="txt_input">Text-input</label><br>
+        <input type="text" name="txt_input" id="txt_input"><br><br>
+        <input type="submit" value="Predict"><br><br>
+    </form>
+    {% if result %}
+        <div class="result-container">
+            <div class="result-line">
+                <span class="result-label">Predicted Sentiment:</span>
+                <span class="result-value {% if result[0] == 'Negative' %}negative-sentiment{% else %}positive-sentiment{% endif %}">{{ result[0] }}</span>
+            </div>
+            <div class="result-line">
+                <span class="result-label">Confidence Level:</span>
+                <span class="result-value">{{ result[1] }}</span>
+            </div>
+        </div>
+    {% endif %}
+</body>
+
+</html>
